@@ -189,6 +189,154 @@ Los datos de cada hábito vienen de dos variables:
 # ¿Por qué es importante esta pantalla?
 Es la sección donde el usuario revisa su rutina diaria. Aunque no permite editar (eso se hace en otra pantalla), esta ventana ayuda a visualizar y seguir el plan de hábitos que se ha definido. Es especialmente útil para reforzar la disciplina y llevar un orden cada día.
 
+# 8. VENTANA DE PROGRESO 
+Esta función abre una ventana donde el usuario puede registrar su progreso diario relacionado con los hábitos que ha seleccionado previamente. Es una herramienta clave para que el usuario pueda llevar un seguimiento de lo que ha hecho en un día, cuánto tiempo le dedicó a un hábito y en qué fecha.
+
+# ¿Qué hace esta función?
+mostrar_progreso() crea una nueva ventana a pantalla completa que:
+- Muestra un encabezado con el título “Progreso” y un botón de regreso.
+
+Incluye campos para que el usuario registre:
+
+- El día en el que hizo el hábito.
+- Cuánto tiempo le dedicó.
+- A qué hábito corresponde ese registro (seleccionado desde un menú desplegable).
+Agrega un botón para guardar el progreso registrado, el cual en esta versión solo muestra un mensaje de confirmación (aún no guarda en base de datos o archivo real).
+
+# ¿Qué pasa con los datos que se ingresan?
+Cuando se hace clic en el botón “Guardar Progreso”, se ejecuta la función interna guardar_progreso(), que:
+- Toma los datos ingresados en los campos (día, tiempo, hábito).
+- Verifica que no estén vacíos.
+- Muestra una alerta informativa (messagebox.showinfo) con los datos registrados.
+- Borra el contenido de los campos para permitir un nuevo ingreso.
+
+# ¿Por qué es importante esta pantalla?
+Esta pantalla es clave porque le permite al usuario hacer un seguimiento diario de sus hábitos. Registrar el día, el hábito y el tiempo ayuda a mantener la constancia y a tomar conciencia del progreso personal.
+
+# 9. VENTANA EDITAR RUTINA 
+Esta función abre una ventana donde el usuario puede editar su rutina de hábitos. Es una sección pensada para que el usuario seleccione un hábito activo y lo modifique, o también agregue uno nuevo.
+
+# ¿Qué hace esta función?
+mostrar_editor_rutina() crea una nueva ventana a pantalla completa que:
+- Muestra un encabezado con un botón de regreso y un título.
+- Presenta una serie de hábitos activos, cada uno con un ícono, su nombre y un botón de “Aceptar” para editarlo.
+- Incluye un botón flotante (+) en la parte inferior izquierda para agregar un nuevo hábito.
+Organiza visualmente los hábitos activos con íconos grandes y diseño amigable.
+
+
+# ¿Por qué es importante esta pantalla?
+Esta ventana es esencial porque permite modificar hábitos activos, personalizar su configuración y añadir otros nuevos. Es el corazón del editor, desde donde el usuario toma control de su rutina.
+Aunque la versión actual aún no hace cambios en tiempo real sobre el checkbox o el diseño, la funcionalidad de navegación y selección ya está integrada y operativa, lo cual es un gran paso en esta versión beta de la app.
+
+
+# 10. PATALLA EDICION INDIVIDUAL DE CADA HABITO
+Esta función abre una pantalla específica para editar los detalles de un hábito activo previamente seleccionado por el usuario. Se usa cuando el usuario da clic en "Aceptar" desde la pantalla del Editor de Rutina.
+
+# ¿Qué hace esta función?
+mostrar_edicion_habito(nombre_habito) crea una ventana a pantalla completa que permite al usuario:
+
+- Cambiar los días en que realiza el hábito.
+- Cambiar el tiempo estimado para realizarlo.
+- Eliminar el hábito si ya no lo quiere en su rutina.
+
+# Eliminar hábito
+En la parte inferior, hay un botón rojo que dice "Eliminar hábito". Este:
+-Llama a la función confirmar_eliminacion_habito().
+-Muestra una alerta de confirmación antes de eliminar el hábito (útil para evitar errores).
+
+# Conclusión
+La función mostrar_edicion_habito() es fundamental en Habitus+ porque permite ajustar detalles clave de los hábitos personalizados. Desde aquí, el usuario puede modificar su rutina a medida que cambian sus necesidades o tiempos. Además, da la opción de eliminar hábitos, lo cual mantiene la rutina limpia y relevante. Una función sencilla, pero potente y esencial para una experiencia personalizada y dinámica.
+
+$ 10. VENTANA ELIMINAR HABITO
+Esta función muestra una ventana emergente que sirve como alerta de confirmación para eliminar un hábito específico. Es una medida de seguridad dentro de la app para evitar que el usuario borre hábitos por accidente.
+
+# ¿Qué hace esta función?
+Cuando el usuario hace clic en "Eliminar hábito", se abre una mini ventana emergente donde se le pregunta:
+"¿Deseas realizar esta acción?"
+
+ Botón “Sí”:
+Si el usuario confirma:
+Se revisa si el hábito está en la lista habitos_activos.
+Se elimina de esa lista.
+Se cierran ambas ventanas: la de confirmación y la de edición.
+Se vuelve a abrir el Editor de Rutina, ya con el hábito eliminado.
+
+
+# ¿Por qué es importante esta función?
+Este tipo de confirmaciones es buena práctica en interfaces de usuario. En apps reales, borrar algo sin querer puede arruinar la experiencia. Esta pequeña ventana le da al usuario la oportunidad de reconsiderar antes de eliminar.
+Además, se destruye la ventana del hábito y se actualiza la interfaz automáticamente con mostrar_editor_rutina() para que el cambio sea inmediato y visualmente claro.
+
+# 11. VENTANA DE AGREGAR HABITO
+Esta función se encarga de mostrar una ventana de pantalla completa donde el usuario puede agregar un nuevo hábito predefinido a su rutina.
+
+# ¿Cuál es el objetivo?
+Permitir que el usuario seleccione uno de los hábitos sugeridos ("Caminar", "Leer", "Dormir") para añadirlo a su lista personal. Esta es una forma sencilla de empezar a armar su rutina con hábitos comunes.
+
+# Parte funcional: agregar_habito(nombre)
+Esta función se activa cuando el usuario presiona uno de los botones de hábitos. Hace lo siguiente:
+
+- Verifica que el hábito no esté ya en la lista habitos_activos.
+- Si no está, lo agrega a esa lista.
+- Llama a mostrar_info_habito(nombre) para abrir su vista individual.
+- Cierra esta ventana de agregar hábito.
+- Si hay una ventana abierta llamada "Editor Rutina", la cierra para que se actualice.
+- Vuelve a abrir mostrar_editor_rutina() con los cambios aplicados.
+- Este paso de cerrar y volver a abrir el editor es importante porque refresca la información automáticamente, sin necesidad de reiniciar la app.
+
+# ¿Por qué es útil esta función?
+Le da al usuario una forma rápida y guiada de crear su rutina. No tiene que escribir el hábito ni pensar en nombres, solo elige uno y listo. Esto es ideal para una primera versión beta de la app, donde queremos que la experiencia sea lo más simple y fluida posible.
+
+# VENTANA INFO NUEVO HABITO
+Cuando se llama esta función, se abre una nueva ventana a pantalla completa con los datos del hábito que el usuario eligió. Estos datos se sacan del diccionario habitos_info, que contiene info como:
+- tiempo: cuánto tiempo se recomienda dedicarle al hábito.
+- dias: qué días se sugiere hacerlo.
+- descripcion: una pequeña explicación motivacional o funcional.
+
+
+# ¿Por qué esta parte es importante?
+Porque la idea es que el usuario no solo agregue hábitos por agregar, sino que entienda qué está haciendo y por qué. Mostrar esta info refuerza el propósito del hábito y ayuda a generar más compromiso con la rutina.
+
+#12. VENTANA ESTADISTICA 
+Esta función abre una nueva ventana donde el usuario puede ver sus estadísticas actuales dentro de la app Habitus+. Es una especie de “panel de progreso” que ayuda a visualizar cómo van sus hábitos y su nivel como si fuera un juego.
+
+# ¿Qué se muestra en esta pantalla?
+La ventana está organizada con diseño limpio y dividido en secciones:
+
+
+- RACHA DÍAS
+Indica cuántos días seguidos el usuario ha cumplido sus hábitos.
+
+Por ahora muestra "00" como valor de prueba.
+
+- RACHA HÁBITOS
+Muestra cuántos hábitos seguidos se han mantenido activos.
+
+También inicia en "00", pero más adelante se puede conectar con una base de datos o contador real.
+
+# ¿Por qué es útil esta función?
+Porque visualizar el progreso es clave para mantener la motivación. Ver que llevas una racha de días o que estás cerca del siguiente nivel hace que el usuario quiera seguir. Y como es una beta, este diseño básico permite seguir iterando fácilmente.
+
+# 13. VENTANA PERFIL
+Esta función abre una ventana donde el usuario puede ver y editar su información personal dentro de la aplicación Habitus+. Es la sección dedicada a mostrar datos básicos como nombre, apellido, correo, contraseña y nivel actual.
+
+# ¿Qué hace esta función?
+mostrar_perfil() crea una ventana nueva, a pantalla completa, que:
+- Muestra un encabezado con un botón para regresar.
+- Presenta un avatar (círculo negro) y el nombre completo del usuario.
+- Permite editar campos de texto: nombre, apellido, correo y contraseña.
+- Muestra el nivel del usuario en modo solo lectura.
+- Incluye un botón para guardar los cambios realizados.
+
+
+# ¿Qué pasa con los datos mostrados y guardados?
+Los datos iniciales provienen del diccionario global usuario_actual.
+- Cuando el usuario edita y presiona "Aceptar", los campos actualizados se guardan en usuario_actual.
+- Se muestra un mensaje informando que los cambios se guardaron.
+- La ventana se cierra después de guardar.
+
+# ¿Por qué es importante esta pantalla?
+El perfil es el centro de la personalización del usuario y da control sobre su información básica. Poder actualizar correo y contraseña es fundamental para mantener la cuenta segura y actualizada.
+
 
 
 
