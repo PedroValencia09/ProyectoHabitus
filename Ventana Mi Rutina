@@ -1,0 +1,35 @@
+
+# ======================= PANTALLA MI RUTINA =======================
+def mostrar_mi_rutina():
+    rutina_window = tk.Toplevel()
+    rutina_window.title("Mi rutina")
+    rutina_window.attributes('-fullscreen', True)
+    rutina_window.configure(bg=COLOR_FONDO)
+
+    header = tk.Frame(rutina_window, bg=COLOR_AZUL_SUAVE, height=100)
+    header.pack(fill=tk.X)
+
+    back_button = tk.Button(header, text="←", bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO,
+                            font=("Arial", 22), command=rutina_window.destroy, relief="flat")
+    back_button.place(x=20, y=30)
+
+    title_font = font.Font(family="Arial", size=28, weight="bold")
+    title_label = tk.Label(header, text="Mi rutina", bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO, font=title_font)
+    title_label.pack(pady=20)
+
+    container = tk.Frame(rutina_window, bg=COLOR_FONDO)
+    container.pack(pady=20)
+
+    for habito in habitos_activos:
+        info = habitos_info.get(habito, {})
+        frame = tk.Frame(container, bg=COLOR_FONDO, highlightbackground=COLOR_AZUL, highlightthickness=1)
+        frame.pack(pady=10, padx=80, fill=tk.X)
+
+        tarea = f"{habito} / {info.get('tiempo', '')}"
+        dias = info.get('dias', '')
+
+        tk.Checkbutton(frame, text=tarea, bg=COLOR_FONDO, fg=COLOR_TEXTO, anchor="w",
+                       font=("Arial", 18, "italic")).pack(side="left", padx=10)
+        tk.Label(frame, text=dias, bg=COLOR_FONDO, fg=COLOR_TEXTO, font=("Arial", 16)).pack(side="right", padx=20)
+
+    rutina_window.bind("<Escape>", lambda e: rutina_window.attributes("-fullscreen", False))
