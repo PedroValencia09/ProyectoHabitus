@@ -1,0 +1,60 @@
+# ======================= VENTANA INICIO =======================
+def mostrar_inicio():
+    inicio_window = tk.Toplevel()
+    inicio_window.title("Habitus + - Inicio")
+    inicio_window.attributes('-fullscreen', True)
+    inicio_window.configure(bg=COLOR_FONDO)
+
+    header = tk.Frame(inicio_window, bg=COLOR_AZUL_SUAVE, height=120)
+    header.pack(fill="x")
+
+    header_label = tk.Label(
+        header,
+        text="Inicio",
+        font=("Arial", 36, "bold"),
+        bg=COLOR_AZUL_SUAVE,
+        fg=COLOR_TEXTO
+    )
+    header_label.place(relx=0.05, rely=0.2)
+
+    perfil_btn = tk.Button(
+        header,
+        text="👤",
+        font=("Arial", 40),
+        bg=COLOR_AZUL_SUAVE,
+        fg=COLOR_TEXTO,
+        bd=0,
+        activebackground=COLOR_AZUL_SUAVE,
+        cursor="hand2",
+       command=mostrar_perfil
+    )
+    perfil_btn.place(relx=0.90, rely=0.15)
+
+    botones_frame = tk.Frame(inicio_window, bg=COLOR_FONDO)
+    botones_frame.pack(expand=True)
+
+    botones = [
+        ("Mira tu Rutina", mostrar_mi_rutina),
+        ("Progreso", mostrar_progreso),
+        ("Editar Rutina", mostrar_editor_rutina),
+        ("Estadísticas", mostrar_estadisticas)
+    ]
+
+    for texto, comando in botones:
+        btn = tk.Button(
+            botones_frame,
+            text=texto,
+            font=("Arial", 20, "italic"),
+            width=25,
+            height=2,
+            bg=COLOR_FONDO,
+            fg=COLOR_TEXTO,
+            relief="solid",
+            command=comando
+        )
+        btn.pack(pady=20)
+
+    inicio_window.bind("<Escape>", lambda e: inicio_window.attributes("-fullscreen", False))
+
+
+
