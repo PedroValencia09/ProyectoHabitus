@@ -1,0 +1,67 @@
+# ======================= VENTANA PROGRESO =======================
+def mostrar_progreso():
+    progreso_window = tk.Toplevel()
+    progreso_window.title("Progreso")
+    progreso_window.attributes('-fullscreen', True)
+    progreso_window.configure(bg=COLOR_FONDO)
+
+    header = tk.Frame(progreso_window, bg=COLOR_AZUL_SUAVE, height=100)
+    header.pack(fill="x")
+
+    btn_volver = tk.Button(header, text="←", font=("Arial", 20), bg=COLOR_AZUL_SUAVE, relief="flat", command=progreso_window.destroy)
+    btn_volver.place(x=20, y=30)
+
+    titulo = tk.Label(header, text="Progreso", font=("Arial", 32, "bold"), bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO)
+    titulo.pack(pady=20)
+
+    instruccion = tk.Label(progreso_window, text="Registra tu progreso diario:", font=("Arial", 20), bg=COLOR_FONDO, fg=COLOR_TEXTO)
+    instruccion.pack(pady=30)
+
+    contenedor = tk.Frame(progreso_window, bg=COLOR_FONDO)
+    contenedor.pack(pady=20)
+
+    # Día
+    label_dia = tk.Label(contenedor, text="Día (Ej: Lunes, 2025-07-06)", font=("Arial", 18), bg=COLOR_FONDO, fg=COLOR_TEXTO)
+    label_dia.grid(row=0, column=0, sticky="w", padx=10, pady=10)
+    entry_dia = tk.Entry(contenedor, font=("Arial", 16), width=25)
+    entry_dia.grid(row=0, column=1, padx=10, pady=10)
+
+    # Tiempo
+    label_tiempo = tk.Label(contenedor, text="Tiempo (Ej: 00:15 o 15 minutos)", font=("Arial", 18), bg=COLOR_FONDO, fg=COLOR_TEXTO)
+    label_tiempo.grid(row=1, column=0, sticky="w", padx=10, pady=10)
+    entry_tiempo = tk.Entry(contenedor, font=("Arial", 16), width=25)
+    entry_tiempo.grid(row=1, column=1, padx=10, pady=10)
+
+    # Hábito (desplegable)
+    label_habito = tk.Label(contenedor, text="Hábito", font=("Arial", 18), bg=COLOR_FONDO, fg=COLOR_TEXTO)
+    label_habito.grid(row=2, column=0, sticky="w", padx=10, pady=10)
+
+    var_habito = tk.StringVar(progreso_window)
+    var_habito.set(habitos_activos[0])  # valor por defecto
+
+    opcion_habito = tk.OptionMenu(contenedor, var_habito, *habitos_activos)
+    opcion_habito.config(font=("Arial", 16), width=20)
+    opcion_habito.grid(row=2, column=1, padx=10, pady=10)
+
+    def guardar_progreso():
+        dia = entry_dia.get().strip()
+        tiempo = entry_tiempo.get().strip()
+        habito = var_habito.get()
+
+        if not dia or not tiempo:
+            messagebox.showwarning("Campos incompletos", "Por favor, llena todos los campos.")
+            return
+
+        # Aquí podrías guardar los datos en base de datos o archivo
+        messagebox.showinfo("Guardado", f"Progreso guardado:\nHábito: {habito}\nDía: {dia}\nTiempo: {tiempo}")
+
+        # Limpiar campos
+        entry_dia.delete(0, tk.END)
+        entry_tiempo.delete(0, tk.END)
+
+    boton_guardar = tk.Button(progreso_window, text="Guardar Progreso", font=("Arial", 18, "bold"),
+                              bg=COLOR_VERDE_SUAVE, fg=COLOR_TEXTO, width=20, command=guardar_progreso)
+    boton_guardar.pack(pady=40)
+
+    progreso_window.bind("<Escape>", lambda e: progreso_window.attributes("-fullscreen", False))
+
