@@ -1,0 +1,79 @@
+# ======================= VENTANA MI YO IDEAL =======================
+def mostrar_mi_yo_ideal():
+    ideal_window = tk.Toplevel()
+    ideal_window.title("Mi yo ideal")
+    ideal_window.attributes('-fullscreen', True)
+    ideal_window.configure(bg=COLOR_FONDO)
+
+    header = tk.Frame(ideal_window, bg=COLOR_AZUL_SUAVE, height=120)
+    header.pack(fill="x")
+
+    header_label = tk.Label(header, text="Mi yo ideal", font=("Arial", 36, "bold"), bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO)
+    header_label.pack(pady=30)
+
+    instruccion = tk.Label(
+        ideal_window,
+        text="¡Selecciona los hábitos que quieres adoptar!",
+        font=("Arial", 28),
+        bg=COLOR_FONDO,
+        fg=COLOR_TEXTO
+    )
+    instruccion.pack(pady=40)
+
+    contenedor = tk.Frame(ideal_window, bg=COLOR_FONDO)
+    contenedor.pack(pady=40)
+
+    seleccion_caminar = tk.BooleanVar(value="Caminar" in habitos_activos)
+    seleccion_leer = tk.BooleanVar(value="Leer" in habitos_activos)
+    seleccion_dormir = tk.BooleanVar(value="Dormir" in habitos_activos)
+
+    opciones = [
+        ("Caminar", "🚶", seleccion_caminar),
+        ("Leer", "📖", seleccion_leer),
+        ("Dormir", "    🛏️", seleccion_dormir)
+    ]
+
+    for nombre, icono, var in opciones:
+        frame = tk.Frame(contenedor, width=250, height=250, bg=COLOR_AZUL_SUAVE, relief="solid", bd=2)
+        frame.pack(side="left", padx=60)
+        frame.pack_propagate(False)
+
+        contenido = tk.Frame(frame, bg=COLOR_AZUL_SUAVE)
+        contenido.pack(expand=True, fill="both")
+
+        label_icon = tk.Label(contenido, text=icono, font=("Arial", 72), bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO)
+        label_icon.place(relx=0.5, rely=0.35, anchor="center")
+
+        label_text = tk.Label(contenido, text=nombre, font=("Arial", 24, "italic"), bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO)
+        label_text.place(relx=0.5, rely=0.75, anchor="center")
+
+        check = tk.Checkbutton(contenido, text="Seleccionar", variable=var, font=("Arial", 14),
+                               bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO, selectcolor=COLOR_VERDE_SUAVE,
+                               onvalue=True, offvalue=False)
+        check.place(relx=0.5, rely=0.9, anchor="center")
+
+    def guardar_seleccion():
+        habitos_activos.clear()
+        if seleccion_caminar.get():
+            habitos_activos.append("Caminar")
+        if seleccion_leer.get():
+            habitos_activos.append("Leer")
+        if seleccion_dormir.get():
+            habitos_activos.append("Dormir")
+        ideal_window.destroy()
+
+    btn_aceptar = tk.Button(
+        ideal_window,
+        text="Aceptar",
+        font=("Arial", 20, "bold"),
+        width=15,
+        height=2,
+        bg=COLOR_VERDE_SUAVE,
+        fg=COLOR_TEXTO,
+        relief="solid",
+        command=lambda: [guardar_seleccion(), mostrar_rutina_personalizada()]
+    )
+    btn_aceptar.pack(pady=60)
+
+    ideal_window.bind("<Escape>", lambda e: ideal_window.attributes("-fullscreen", False))
+
