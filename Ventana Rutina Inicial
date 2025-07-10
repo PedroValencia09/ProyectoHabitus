@@ -1,0 +1,49 @@
+# ======================= VENTANA RUTINA INICIAL =======================
+def mostrar_rutina(login_window):
+    login_window.withdraw()
+
+    rutina_window = tk.Toplevel()
+    rutina_window.title("Habitus + - Rutina")
+    rutina_window.attributes('-fullscreen', True)
+    rutina_window.configure(bg=COLOR_FONDO)
+
+    header = tk.Frame(rutina_window, bg=COLOR_AZUL_SUAVE, height=120)
+    header.pack(fill="x")
+
+    header_label = tk.Label(
+        header, text="¿Cuentas con alguna rutina?", font=("Arial", 30, "bold"), bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO
+    )
+    header_label.pack(pady=30)
+
+    botones_frame = tk.Frame(rutina_window, bg=COLOR_FONDO)
+    botones_frame.pack(expand=True)
+
+    boton_si = tk.Button(
+        botones_frame,
+        text="SÍ",
+        font=("Arial", 22, "bold"),
+        bg=COLOR_VERDE_SUAVE,
+        fg=COLOR_TEXTO,
+        relief="solid",
+        bd=1,
+        width=12,
+        height=2,
+        command=lambda: [rutina_window.destroy(), mostrar_inicio()]
+    )
+    boton_si.pack(pady=40)
+
+    boton_no = tk.Button(
+        botones_frame,
+        text="NO",
+        font=("Arial", 22, "bold"),
+        bg=COLOR_VERDE_SUAVE,
+        fg=COLOR_TEXTO,
+        relief="solid",
+        bd=1,
+        width=12,
+        height=2,
+        command=lambda: [rutina_window.destroy(), mostrar_mi_yo_ideal()]
+    )
+    boton_no.pack()
+
+    rutina_window.bind("<Escape>", lambda e: rutina_window.attributes("-fullscreen", False))
