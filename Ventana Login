@@ -1,0 +1,48 @@
+# ======================= LOGIN =======================
+def mostrar_login():
+    login_window = tk.Toplevel()
+    login_window.title("Habitus + - Inicio")
+    login_window.attributes('-fullscreen', True)
+    login_window.configure(bg=COLOR_FONDO)
+
+    def iniciar_sesion():
+        correo = correo_entry.get().strip()
+        contraseña = contraseña_entry.get().strip()
+        if correo and contraseña:
+            # Validar contra datos guardados
+            if correo == usuario_actual["correo"] and contraseña == usuario_actual["contraseña"]:
+                login_window.withdraw()  # Oculta login
+                mostrar_rutina(login_window)  # muestra rutina
+            else:
+                messagebox.showerror("Error", "Correo o contraseña incorrectos")
+        else:
+            messagebox.showwarning("Datos incompletos", "Por favor ingresa tus datos")
+
+    def ir_a_registro():
+        mostrar_ventana_registro(login_window)
+
+    # Elementos UI
+    tk.Label(login_window, text="Habitus +", font=("Arial", 48, "bold"), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack(pady=60)
+
+    tk.Label(login_window, text="¡Bienvenido, regístrate para poder\niniciar esta nueva experiencia!",
+             font=("Arial", 24), bg=COLOR_FONDO, fg=COLOR_TEXTO, justify="center").pack(pady=30)
+
+    tk.Label(login_window, text="Correo Electrónico", font=("Arial", 20, "bold"),
+             bg=COLOR_FONDO, fg=COLOR_TEXTO).pack(pady=(60, 10))
+    correo_entry = tk.Entry(login_window, width=30, font=("Arial", 18), bg=COLOR_VERDE_SUAVE,
+                            relief="solid", bd=1, fg=COLOR_TEXTO, insertbackground=COLOR_TEXTO)
+    correo_entry.pack()
+
+    tk.Label(login_window, text="Contraseña", font=("Arial", 20, "bold"),
+             bg=COLOR_FONDO, fg=COLOR_TEXTO).pack(pady=(60, 10))
+    contraseña_entry = tk.Entry(login_window, width=30, font=("Arial", 18), show="*", bg=COLOR_VERDE_SUAVE,
+                                relief="solid", bd=1, fg=COLOR_TEXTO, insertbackground=COLOR_TEXTO)
+    contraseña_entry.pack()
+
+    tk.Button(login_window, text="Entrar", font=("Arial", 24, "bold"), bg=COLOR_VERDE, fg="white",
+              relief="flat", width=15, height=2, command=iniciar_sesion).pack(pady=40)
+
+    tk.Button(login_window, text="Registrar nuevo usuario", font=("Arial", 16),
+              bg="white", fg=COLOR_VERDE, relief="flat", command=ir_a_registro).pack()
+
+    login_window.bind("<Escape>", lambda e: login_window.attributes("-fullscreen", False))
