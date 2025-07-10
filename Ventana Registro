@@ -1,0 +1,59 @@
+# ======================= REGISTRO =======================
+def mostrar_ventana_registro(ventana_login):
+    ventana_login.withdraw()  # Oculta login temporalmente
+
+    registro_window = tk.Toplevel()
+    registro_window.title("Registro de Usuario")
+    registro_window.attributes("-fullscreen", True)
+    registro_window.configure(bg=COLOR_FONDO)
+
+    def volver_a_login():
+        registro_window.destroy()
+        ventana_login.deiconify()
+
+    def registrar_usuario():
+        nombre = nombre_entry.get().strip()
+        correo = correo_entry.get().strip()
+        contraseña = password_entry.get().strip()
+        if nombre and correo and contraseña:
+            # Guardamos datos en usuario_actual global
+            usuario_actual["nombre"] = nombre
+            usuario_actual["correo"] = correo
+            usuario_actual["contraseña"] = contraseña
+            usuario_actual["nivel"] = "Principiante"
+
+            messagebox.showinfo("Registro exitoso", "Usuario registrado correctamente")
+            volver_a_login()
+        else:
+            messagebox.showwarning("Faltan datos", "Por favor llena todos los campos")
+
+    tk.Label(registro_window, text="Habitus +", font=("Arial", 36, "bold"), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack(pady=30)
+
+    tk.Label(registro_window, text="Nombre Completo", bg=COLOR_FONDO, font=("Arial", 18), fg=COLOR_TEXTO).pack()
+    nombre_entry = tk.Entry(registro_window, width=30, font=("Arial", 16))
+    nombre_entry.pack(pady=5)
+
+    tk.Label(registro_window, text="Correo Electrónico", bg=COLOR_FONDO, font=("Arial", 18), fg=COLOR_TEXTO).pack()
+    correo_entry = tk.Entry(registro_window, width=30, font=("Arial", 16))
+    correo_entry.pack(pady=5)
+
+    tk.Label(registro_window, text="Contraseña", bg=COLOR_FONDO, font=("Arial", 18), fg=COLOR_TEXTO).pack()
+    password_entry = tk.Entry(registro_window, width=30, show="*", font=("Arial", 16))
+    password_entry.pack(pady=5)
+
+    tk.Button(registro_window, text="Registrar", command=registrar_usuario, font=("Arial", 16, "bold"),
+              bg="#2ecc71", fg="white", width=20, height=2).pack(pady=30)
+
+    tk.Button(registro_window, text="Volver al login", command=volver_a_login,
+              font=("Arial", 12), bg="gray", fg="white").pack(pady=10)
+    
+  # ======================= INICIO DE LA APLICACIÓN =======================
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.withdraw()  # Ocultamos ventana raíz, usamos ventanas Toplevel
+
+    mostrar_login()
+
+    root.mainloop()
+
+
