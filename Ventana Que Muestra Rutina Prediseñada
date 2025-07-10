@@ -1,0 +1,43 @@
+#======================= VENTANA QUE MUESTRA RUTINA PREDISEÑADA =======================
+def mostrar_rutina_personalizada():
+    rutina_window = tk.Toplevel()
+    rutina_window.title("Tu rutina inicial")
+    rutina_window.attributes('-fullscreen', True)
+    rutina_window.configure(bg=COLOR_FONDO)
+
+    header = tk.Frame(rutina_window, bg=COLOR_AZUL_SUAVE, height=120)
+    header.pack(fill="x")
+
+    label_titulo = tk.Label(header, text="Rutina", font=("Arial", 36, "bold"), bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO)
+    label_titulo.pack(pady=30)
+
+    contenedor = tk.Frame(rutina_window, bg=COLOR_FONDO)
+    contenedor.pack(pady=40)
+
+    for habito in habitos_activos:
+        info = habitos_info.get(habito, {})
+        frame = tk.Frame(contenedor, bg=COLOR_FONDO, highlightbackground=COLOR_AZUL, highlightthickness=1)
+        frame.pack(pady=15, padx=80, fill=tk.X)
+
+        titulo = f"{habito} - Nivel 1"
+        tiempo = f"Tiempo sugerido: {info.get('tiempo', '')}"
+        dias = f"Días: {info.get('dias', '')}"
+
+        tk.Label(frame, text=titulo, font=("Arial", 22, "bold"), bg=COLOR_FONDO, fg=COLOR_TEXTO, anchor="w").pack(anchor="w", padx=10, pady=5)
+        tk.Label(frame, text=tiempo, font=("Arial", 18), bg=COLOR_FONDO, fg=COLOR_TEXTO, anchor="w").pack(anchor="w", padx=20)
+        tk.Label(frame, text=dias, font=("Arial", 18), bg=COLOR_FONDO, fg=COLOR_TEXTO, anchor="w").pack(anchor="w", padx=20, pady=(0, 10))
+
+    btn_aceptar = tk.Button(
+        rutina_window,
+        text="Aceptar",
+        font=("Arial", 20, "bold"),
+        bg=COLOR_VERDE_SUAVE,
+        fg=COLOR_TEXTO,
+        relief="solid",
+        width=15,
+        height=2,
+        command=lambda: [rutina_window.destroy(), mostrar_inicio()]
+    )
+    btn_aceptar.pack(pady=50)
+
+    rutina_window.bind("<Escape>", lambda e: rutina_window.attributes("-fullscreen", False))
