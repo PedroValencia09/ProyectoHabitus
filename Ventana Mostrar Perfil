@@ -1,0 +1,84 @@
+#////////////////////////////////////////////////////////////////
+# ======================= MOSTRAR PERFIL =======================
+
+def mostrar_perfil():
+    perfil_window = tk.Toplevel()
+    perfil_window.title("Perfil de Usuario")
+    perfil_window.attributes('-fullscreen', True)
+    perfil_window.configure(bg=COLOR_FONDO)
+
+    # Header
+    header = tk.Frame(perfil_window, bg=COLOR_AZUL_SUAVE, height=180)
+    header.pack(fill="x")
+
+    tk.Button(header, text="←", font=("Arial", 20), bg=COLOR_AZUL_SUAVE, relief="flat",
+              command=perfil_window.destroy).place(x=20, y=30)
+
+    # Avatar y nombre
+    avatar_frame = tk.Frame(header, bg=COLOR_AZUL_SUAVE)
+    avatar_frame.pack(pady=10)
+
+    tk.Canvas(avatar_frame, width=100, height=100, bg="white", highlightthickness=0).create_oval(10, 10, 90, 90, fill="black")
+    tk.Label(avatar_frame, text=f"{usuario_actual['nombre']} {usuario_actual.get('apellido', '')}",
+             font=("Arial", 26, "bold"), bg=COLOR_AZUL_SUAVE, fg="white").pack()
+    tk.Label(avatar_frame, text="Puebla,Puebla", font=("Arial", 16), bg=COLOR_AZUL_SUAVE, fg="white").pack()
+
+    # Cuerpo principal
+    cuerpo = tk.Frame(perfil_window, bg=COLOR_FONDO)
+    cuerpo.pack(pady=60)
+
+    # Nombre
+    tk.Label(cuerpo, text="Your Name", font=("Arial", 18), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack()
+    entry_nombre = tk.Entry(cuerpo, font=("Arial", 18), width=30)
+    entry_nombre.insert(0, usuario_actual["nombre"])
+    entry_nombre.pack(pady=5)
+
+    
+
+    # Apellido (usamos campo ficticio si no existe)
+    tk.Label(cuerpo, text="Last Name", font=("Arial", 18), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack()
+    entry_apellido = tk.Entry(cuerpo, font=("Arial", 18), width=30)
+    entry_apellido.insert(0, usuario_actual.get("apellido", ""))
+    entry_apellido.pack(pady=5)
+
+    # Correo
+    tk.Label(cuerpo, text="Your Email", font=("Arial", 18), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack()
+    entry_correo = tk.Entry(cuerpo, font=("Arial", 18), width=30)
+    entry_correo.insert(0, usuario_actual["correo"])
+    entry_correo.pack(pady=5)
+
+    # Contraseña
+    tk.Label(cuerpo, text="Nueva contraseña", font=("Arial", 18), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack(pady=(30, 5))
+    entry_pwd = tk.Entry(cuerpo, font=("Arial", 18), width=30, show="*")
+    entry_pwd.pack()
+
+    # Nivel del usuario (solo lectura)
+    tk.Label(cuerpo, text="Nivel", font=("Arial", 18), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack()
+    tk.Label(cuerpo, text=usuario_actual.get("nivel", "Principiante"),
+         font=("Arial", 18, "bold"), bg=COLOR_VERDE_SUAVE, fg=COLOR_TEXTO, width=25).pack(pady=5)
+
+    def guardar_todo():
+        nuevo_nombre = entry_nombre.get().strip()
+        nuevo_apellido = entry_apellido.get().strip()
+        nuevo_correo = entry_correo.get().strip()
+        nueva_pwd = entry_pwd.get().strip()
+
+        if nuevo_nombre:
+            usuario_actual["nombre"] = nuevo_nombre
+        if nuevo_apellido:
+            usuario_actual["apellido"] = nuevo_apellido
+        if nuevo_correo:
+            usuario_actual["correo"] = nuevo_correo
+        if nueva_pwd:
+            usuario_actual["contraseña"] = nueva_pwd
+
+        messagebox.showinfo("Perfil actualizado", "Los cambios se han guardado correctamente.")
+        perfil_window.destroy()
+
+    # Botón Aceptar (como en la imagen)
+    tk.Button(perfil_window, text="Aceptar", font=("Arial", 20, "bold"),
+              bg=COLOR_AZUL_SUAVE, fg="white", width=20, height=2, relief="flat",
+              command=guardar_todo).pack(pady=50)
+
+    perfil_window.bind("<Escape>", lambda e: perfil_window.attributes("-fullscreen", False))
+
