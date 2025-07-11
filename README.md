@@ -50,7 +50,6 @@ Esto abre la ventana de registro y mantiene la ventana de login como base para c
 
 
 
-
 # 2. VENTANA REGISTRO
 Esta parte del código pertenece a la ventana de registro de usuario. Es la pantalla que se abre cuando alguien todavía no tiene cuenta y necesita crear una para poder usar la app. Como estoy trabajando en la versión beta de Habitus +, decidí mantener el proceso simple pero funcional.
 
@@ -80,6 +79,16 @@ Si algún campo está vacío, se muestra una advertencia pidiendo que complete t
 
 # Por qué es importante esta parte
 Aunque no está conectada a una base de datos todavía (porque esta es una beta), esta ventana simula muy bien cómo sería un registro real. Además, me sirve para hacer pruebas de navegación, validación de formularios y estructura general del sistema sin tener que usar datos reales ni usuarios externos.
+
+
+
+
+<img width="1919" height="1030" alt="Captura de pantalla 2025-07-11 093302" src="https://github.com/user-attachments/assets/b8462649-4b68-46b3-828d-0ce0a0b62545" />
+
+
+
+
+
 
 
 # 3. VENTANA CUENTAS CON UNA RUTINA
