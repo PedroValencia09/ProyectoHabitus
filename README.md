@@ -176,6 +176,13 @@ Al final, hay un botón que permite continuar (cierra esta ventana y lleva al us
 # ¿Por qué es importante?
 Esta parte del código le da al usuario una sensación de personalización desde el principio. No solo elige hábitos al azar, sino que ve reflejadas sus decisiones en una rutina inicial clara y visual. Esto motiva y da dirección desde la primera vez que se usa la app.
 
+
+
+<img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/c02ffae7-73c3-4c7c-bcae-d6246e9a2da6" />
+
+
+
+
 # 6. Ventana Principal de Inicio 
 Esta función crea la ventana principal de la app Habitus + que se muestra después de que el usuario haya iniciado sesión o completado su rutina personalizada. Es el panel central desde donde el usuario puede acceder a diferentes funcionalidades.
 
@@ -207,6 +214,15 @@ Esto facilita que el usuario pueda navegar sin complicaciones y acceda rápido a
 # ¿Por qué es importante esta pantalla?
 Es la puerta de entrada a la experiencia completa del usuario dentro de la app. Desde aquí puede gestionar sus hábitos, ver su progreso y tomar acciones para mejorar. Tener una ventana clara, organizada y con botones bien definidos mejora mucho la usabilidad y la satisfacción del usuario.
 
+
+
+<img width="1919" height="1027" alt="image" src="https://github.com/user-attachments/assets/d357d0be-1355-4148-8782-6e6090432a5a" />
+
+
+
+
+
+
 # 7.  VENTANA DE RUTINA PERSONAL 
 Esta función abre una ventana que muestra al usuario su rutina personalizada de hábitos. Es una vista donde puede visualizar los hábitos activos que ha seleccionado, junto con información útil como el tiempo asignado y los días en que se realizan.
 
@@ -223,6 +239,16 @@ Los datos de cada hábito vienen de dos variables:
 
 # ¿Por qué es importante esta pantalla?
 Es la sección donde el usuario revisa su rutina diaria. Aunque no permite editar (eso se hace en otra pantalla), esta ventana ayuda a visualizar y seguir el plan de hábitos que se ha definido. Es especialmente útil para reforzar la disciplina y llevar un orden cada día.
+
+
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/b7ba3a17-265e-4c7a-abee-5cdebd28cc65" />
+
+
+
+
+
+
 
 # 8. VENTANA DE PROGRESO 
 Esta función abre una ventana donde el usuario puede registrar su progreso diario relacionado con los hábitos que ha seleccionado previamente. Es una herramienta clave para que el usuario pueda llevar un seguimiento de lo que ha hecho en un día, cuánto tiempo le dedicó a un hábito y en qué fecha.
