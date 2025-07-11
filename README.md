@@ -45,8 +45,8 @@ Esto abre la ventana de registro y mantiene la ventana de login como base para c
 
 
 
+<img width="1917" height="1079" alt="Captura de pantalla 2025-07-11 092925" src="https://github.com/user-attachments/assets/421f1934-cd41-4027-90a2-429b8c7be09f" />
 
-<img width="599" height="798" alt="image" src="https://github.com/user-attachments/assets/70fefb23-2ccb-49f8-8840-dc1d21b2b5c5" />
 
 
 
