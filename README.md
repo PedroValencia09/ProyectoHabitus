@@ -41,6 +41,16 @@ Primero se obtienen los datos ingresados por el usuario y se eliminan posibles e
 #  Redirección al registro (ir_a_registro)
 Esto abre la ventana de registro y mantiene la ventana de login como base para conservar el control de navegación.
 
+
+
+
+
+
+<img width="599" height="798" alt="image" src="https://github.com/user-attachments/assets/70fefb23-2ccb-49f8-8840-dc1d21b2b5c5" />
+
+
+
+
 # 2. VENTANA REGISTRO
 Esta parte del código pertenece a la ventana de registro de usuario. Es la pantalla que se abre cuando alguien todavía no tiene cuenta y necesita crear una para poder usar la app. Como estoy trabajando en la versión beta de Habitus +, decidí mantener el proceso simple pero funcional.
 
