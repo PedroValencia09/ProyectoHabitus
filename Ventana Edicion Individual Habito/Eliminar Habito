@@ -1,49 +1,61 @@
-# /////////////////////////////////////////////////////////////////////////////////
-# ======================= VENTANA EDICIÓN INDIVIDUAL HABITO =======================
-def mostrar_estadisticas():
-    estadisticas_window = tk.Toplevel()
-    estadisticas_window.title("Estadísticas")
-    estadisticas_window.attributes('-fullscreen', True)
-    estadisticas_window.configure(bg=COLOR_FONDO)
+#//////////////////////////////////////////////////////////////////////////
+# ======================= VENTANA EDICIÓN DE HÁBITO =======================
+def mostrar_edicion_habito(nombre_habito):
+    ventana = tk.Toplevel()
+    ventana.title(f"Editar hábito: {nombre_habito}")
+    ventana.attributes('-fullscreen', True)
+    ventana.configure(bg=COLOR_FONDO)
 
-    header = tk.Frame(estadisticas_window, bg=COLOR_AZUL_SUAVE, height=100)
+    header = tk.Frame(ventana, bg=COLOR_AZUL_SUAVE, height=100)
     header.pack(fill="x")
 
-    tk.Button(header, text="←", font=("Arial", 20), bg=COLOR_AZUL_SUAVE, relief="flat", command=estadisticas_window.destroy).place(x=20, y=30)
-    tk.Label(header, text="Estadísticas", font=("Arial", 32, "bold"), bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO).pack(pady=20)
+    tk.Button(header, text="←", font=("Arial", 20), bg=COLOR_AZUL_SUAVE, relief="flat", command=ventana.destroy).place(x=20, y=30)
+    tk.Label(header, text=f"{nombre_habito}", font=("Arial", 32, "bold"), bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO).pack(pady=20)
 
-    rachas_frame = tk.Frame(estadisticas_window, bg=COLOR_FONDO)
-    rachas_frame.pack(pady=50, fill="x")
+    cuerpo = tk.Frame(ventana, bg=COLOR_FONDO)
+    cuerpo.pack(pady=40)
 
-    frame_dias = tk.Frame(rachas_frame, bg=COLOR_FONDO)
-    frame_dias.pack(side="left", expand=True)
+    tk.Label(cuerpo, text="Editar día(s)", font=("Arial", 20), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack(pady=10)
+    entry_dias = tk.Entry(cuerpo, font=("Arial", 16), width=30)
+    entry_dias.insert(0, habitos_info[nombre_habito]["dias"])
+    entry_dias.pack(pady=10)
 
-    tk.Label(frame_dias, text="RACHA\nDÍAS", font=("Arial", 16, "bold"), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack(pady=10)
-    tk.Label(frame_dias, text="DÍAS", font=("Arial", 14, "bold"), bg=COLOR_VERDE_SUAVE, fg=COLOR_TEXTO, width=10).pack()
-    tk.Label(frame_dias, text="00", font=("Arial", 18, "bold"), bg=COLOR_FONDO, fg=COLOR_TEXTO, relief="solid", width=10, height=2).pack()
+    tk.Label(cuerpo, text="Editar tiempo", font=("Arial", 20), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack(pady=10)
+    entry_tiempo = tk.Entry(cuerpo, font=("Arial", 16), width=30)
+    entry_tiempo.insert(0, habitos_info[nombre_habito]["tiempo"])
+    entry_tiempo.pack(pady=10)
 
-    frame_habitos = tk.Frame(rachas_frame, bg=COLOR_FONDO)
-    frame_habitos.pack(side="left", expand=True)
+    def guardar_cambios():
+        nuevo_dia = entry_dias.get().strip()
+        nuevo_tiempo = entry_tiempo.get().strip()
+        if nuevo_dia and nuevo_tiempo:
+            habitos_info[nombre_habito]["dias"] = nuevo_dia
+            habitos_info[nombre_habito]["tiempo"] = nuevo_tiempo
+        ventana.destroy()
 
-    tk.Label(frame_habitos, text="RACHA\nHÁBITOS", font=("Arial", 16, "bold"), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack(pady=10)
-    tk.Label(frame_habitos, text="00", font=("Arial", 18, "bold"), bg=COLOR_VERDE_SUAVE, fg=COLOR_TEXTO, relief="solid", width=10, height=2).pack()
+    tk.Button(
+        cuerpo,
+        text="Aceptar",
+        font=("Arial", 18, "bold"),
+        bg=COLOR_VERDE_SUAVE,
+        fg=COLOR_TEXTO,
+        width=15,
+        height=2,
+        command=guardar_cambios
+    ).pack(pady=40)
 
-    separator = tk.Frame(estadisticas_window, height=2, bg=COLOR_AZUL)
-    separator.pack(fill="x", pady=30)
+    tk.Button(
+        ventana,
+        text="Eliminar hábito",
+        font=("Arial", 16, "bold"),
+        fg="white",
+        bg="red",
+        relief="raised",
+        command=lambda: confirmar_eliminacion_habito(ventana, nombre_habito)
+    ).pack(side="bottom", pady=30)
 
-    nivel_frame = tk.Frame(estadisticas_window, bg=COLOR_FONDO)
-    nivel_frame.pack(pady=20)
+    ventana.bind("<Escape>", lambda e: ventana.attributes("-fullscreen", False))
 
-    tk.Label(nivel_frame, text="NIVEL DE JUGADOR", font=("Arial", 14), bg=COLOR_FONDO, fg=COLOR_TEXTO).pack()
-
-    barra_nivel = tk.Frame(nivel_frame, bg=COLOR_FONDO, relief="solid", bd=1)
-    barra_nivel.pack(pady=10)
-
-    tk.Label(barra_nivel, text="LVL 1", font=("Arial", 14), bg=COLOR_VERDE_SUAVE, fg=COLOR_TEXTO, width=10, relief="solid").pack(side="left")
-    tk.Label(barra_nivel, text="0-100", font=("Arial", 12, "bold"), bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO, width=25, relief="solid").pack(side="left")
-    tk.Label(barra_nivel, text="LVL 2", font=("Arial", 14), bg=COLOR_VERDE_SUAVE, fg=COLOR_TEXTO, width=10, relief="solid").pack(side="left")
-
-    estadisticas_window.bind("<Escape>", lambda e: estadisticas_window.attributes("-fullscreen", False))
 
 #/////////////////////////////////////////////////////////////////////////////
 # ======================= CONFIRMACIÓN ELIMINAR HÁBITO =======================
