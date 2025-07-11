@@ -348,6 +348,7 @@ Este tipo de confirmaciones es buena práctica en interfaces de usuario. En apps
 Además, se destruye la ventana del hábito y se actualiza la interfaz automáticamente con mostrar_editor_rutina() para que el cambio sea inmediato y visualmente claro.
 
 
+<img width="840" height="466" alt="image" src="https://github.com/user-attachments/assets/baa94019-3129-416b-8724-28ca1672a6a5" />
 
 
 
@@ -384,6 +385,14 @@ Cuando se llama esta función, se abre una nueva ventana a pantalla completa con
 # ¿Por qué esta parte es importante?
 Porque la idea es que el usuario no solo agregue hábitos por agregar, sino que entienda qué está haciendo y por qué. Mostrar esta info refuerza el propósito del hábito y ayuda a generar más compromiso con la rutina.
 
+
+
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/a3c7dcac-5321-4d2e-a22f-c5cd411aa735" />
+
+
+
+
 #12. VENTANA ESTADISTICA 
 Esta función abre una nueva ventana donde el usuario puede ver sus estadísticas actuales dentro de la app Habitus+. Es una especie de “panel de progreso” que ayuda a visualizar cómo van sus hábitos y su nivel como si fuera un juego.
 
@@ -403,6 +412,13 @@ También inicia en "00", pero más adelante se puede conectar con una base de da
 
 # ¿Por qué es útil esta función?
 Porque visualizar el progreso es clave para mantener la motivación. Ver que llevas una racha de días o que estás cerca del siguiente nivel hace que el usuario quiera seguir. Y como es una beta, este diseño básico permite seguir iterando fácilmente.
+
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/538307f6-8198-4431-9064-6b25da9610a4" />
+
+
+
+
 
 # 13. VENTANA PERFIL
 Esta función abre una ventana donde el usuario puede ver y editar su información personal dentro de la aplicación Habitus+. Es la sección dedicada a mostrar datos básicos como nombre, apellido, correo, contraseña y nivel actual.
@@ -426,6 +442,7 @@ Los datos iniciales provienen del diccionario global usuario_actual.
 El perfil es el centro de la personalización del usuario y da control sobre su información básica. Poder actualizar correo y contraseña es fundamental para mantener la cuenta segura y actualizada.
 
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/211b7720-b0ea-4b88-bd62-ca9b56ef2b5a" />
 
 
 
