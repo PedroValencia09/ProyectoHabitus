@@ -274,6 +274,14 @@ Cuando se hace clic en el botón “Guardar Progreso”, se ejecuta la función 
 # ¿Por qué es importante esta pantalla?
 Esta pantalla es clave porque le permite al usuario hacer un seguimiento diario de sus hábitos. Registrar el día, el hábito y el tiempo ayuda a mantener la constancia y a tomar conciencia del progreso personal.
 
+
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/38b926cb-7672-45ce-b980-f2bd826c6c4a" />
+
+
+
+
+
 # 9. VENTANA EDITAR RUTINA 
 Esta función abre una ventana donde el usuario puede editar su rutina de hábitos. Es una sección pensada para que el usuario seleccione un hábito activo y lo modifique, o también agregue uno nuevo.
 
@@ -288,6 +296,11 @@ Organiza visualmente los hábitos activos con íconos grandes y diseño amigable
 # ¿Por qué es importante esta pantalla?
 Esta ventana es esencial porque permite modificar hábitos activos, personalizar su configuración y añadir otros nuevos. Es el corazón del editor, desde donde el usuario toma control de su rutina.
 Aunque la versión actual aún no hace cambios en tiempo real sobre el checkbox o el diseño, la funcionalidad de navegación y selección ya está integrada y operativa, lo cual es un gran paso en esta versión beta de la app.
+
+
+
+<img width="1919" height="1076" alt="image" src="https://github.com/user-attachments/assets/811b8816-fbb1-4e3e-8702-d8d7cb44a628" />
+
 
 
 # 10. PATALLA EDICION INDIVIDUAL DE CADA HABITO
@@ -308,6 +321,13 @@ En la parte inferior, hay un botón rojo que dice "Eliminar hábito". Este:
 # Conclusión
 La función mostrar_edicion_habito() es fundamental en Habitus+ porque permite ajustar detalles clave de los hábitos personalizados. Desde aquí, el usuario puede modificar su rutina a medida que cambian sus necesidades o tiempos. Además, da la opción de eliminar hábitos, lo cual mantiene la rutina limpia y relevante. Una función sencilla, pero potente y esencial para una experiencia personalizada y dinámica.
 
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/7b0df92f-77af-4511-a959-97076acb14eb" />
+
+
+
+
+
 $ 10. VENTANA ELIMINAR HABITO
 Esta función muestra una ventana emergente que sirve como alerta de confirmación para eliminar un hábito específico. Es una medida de seguridad dentro de la app para evitar que el usuario borre hábitos por accidente.
 
@@ -326,6 +346,13 @@ Se vuelve a abrir el Editor de Rutina, ya con el hábito eliminado.
 # ¿Por qué es importante esta función?
 Este tipo de confirmaciones es buena práctica en interfaces de usuario. En apps reales, borrar algo sin querer puede arruinar la experiencia. Esta pequeña ventana le da al usuario la oportunidad de reconsiderar antes de eliminar.
 Además, se destruye la ventana del hábito y se actualiza la interfaz automáticamente con mostrar_editor_rutina() para que el cambio sea inmediato y visualmente claro.
+
+
+
+
+
+
+
 
 # 11. VENTANA DE AGREGAR HABITO
 Esta función se encarga de mostrar una ventana de pantalla completa donde el usuario puede agregar un nuevo hábito predefinido a su rutina.
