@@ -145,6 +145,11 @@ Cada hábito se asocia a una variable booleana (tk.BooleanVar), que indica si es
 Esta pantalla representa un momento clave donde el usuario define su propia experiencia dentro de la aplicación. En vez de imponer una rutina genérica, se le permite construir una basada en lo que realmente desea mejorar.
 Es parte del enfoque de personalización del hábito, y también facilita que el usuario se involucre desde el primer momento.
 
+
+
+<img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/f3848863-ce77-4f0c-b070-879a510b6f9c" />
+
+
 # 5. VENTANA RUTINA PREDISEÑADA
 
 # ¿Qué hace esta función?
