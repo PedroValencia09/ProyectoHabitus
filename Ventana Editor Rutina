@@ -1,0 +1,45 @@
+# ======================= EDITOR RUTINA  =======================
+def mostrar_editor_rutina():
+    editor_window = tk.Toplevel()
+    editor_window.title("Editor Rutina")
+    editor_window.attributes('-fullscreen', True)
+    editor_window.configure(bg=COLOR_FONDO)  
+
+    header = tk.Frame(editor_window, bg=COLOR_AZUL_SUAVE, height=100)
+    header.pack(fill="x")
+
+    btn_volver = tk.Button(header, text="←", font=("Arial", 20), bg=COLOR_AZUL_SUAVE, relief="flat", command=editor_window.destroy)
+    btn_volver.place(x=20, y=30)
+
+    titulo = tk.Label(header, text="Editor Rutina", font=("Arial", 32, "bold"), bg=COLOR_AZUL_SUAVE, fg=COLOR_TEXTO)
+    titulo.pack(pady=20)
+
+    instruccion = tk.Label(editor_window, text="¡Selecciona el hábito que quieras editar!", font=("Arial", 20), bg=COLOR_FONDO, fg=COLOR_TEXTO)
+    instruccion.pack(pady=30)
+
+    contenedor = tk.Frame(editor_window, bg=COLOR_FONDO)
+    contenedor.pack(pady=20)
+
+    todos_habitos = [("Caminar", "👣"), ("Leer", "📖"), ("Dormir", "     🛏️")]
+    habitos = [h for h in todos_habitos if h[0] in habitos_activos]
+
+    for nombre, icono in habitos:
+        habit_frame = tk.Frame(contenedor, bg=COLOR_FONDO)
+        habit_frame.pack(side="left", padx=40)
+
+        icon_label = tk.Label(habit_frame, text=icono, font=("Arial", 60), bg=COLOR_VERDE_SUAVE, width=4, height=2)
+        icon_label.pack()
+
+        check = tk.Checkbutton(habit_frame, bg=COLOR_FONDO)
+        check.pack(pady=10)
+
+        label = tk.Label(habit_frame, text=nombre, font=("Arial", 16, "italic"), bg=COLOR_FONDO, fg=COLOR_TEXTO)
+        label.pack()
+
+        tk.Button(habit_frame, text="Aceptar", font=("Arial", 12), bg=COLOR_VERDE_SUAVE, fg=COLOR_TEXTO, command=lambda n=nombre: mostrar_edicion_habito(n)).pack(pady=5)
+
+    boton_agregar = tk.Button(editor_window, text="+", font=("Arial", 28, "bold"), bg=COLOR_VERDE_SUAVE, fg=COLOR_TEXTO, relief="flat", width=2, command=mostrar_agregar_habito)
+    boton_agregar.place(x=30, y=editor_window.winfo_screenheight() - 100)
+
+    editor_window.bind("<Escape>", lambda e: editor_window.attributes("-fullscreen", False))
+
