@@ -109,6 +109,17 @@ La función mostrar_rutina(login_window) se encarga de:
 Esta parte del flujo es esencial porque define cómo se va a comportar la aplicación a partir del usuario que la esté usando. Si es alguien nuevo, lo guiamos para construir su rutina desde cero. Si es alguien que ya tiene una rutina, lo llevamos directo al inicio.
 Es una decisión que marca el camino en la app, por eso lo presento de forma clara y con solo dos opciones.
 
+
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/7e89644e-2235-4612-ada7-8b5554002ee6" />
+
+
+
+
+
+
+
+
 # 4. VENTANA MI YO IDEAL
 Esta función representa una de las pantallas más importantes de la experiencia inicial dentro de la app Habitus +. Aquí, el usuario puede elegir los hábitos saludables que le gustaría adoptar, sirviendo como punto de partida para construir una rutina personalizada.
 
