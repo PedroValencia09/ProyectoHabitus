@@ -447,14 +447,17 @@ El perfil es el centro de la personalización del usuario y da control sobre su 
 # DISEÑO DE BASE DATOS (AUN NO ES LA DEFINITIVA)
 
 
-MODELO ENTIDAD-RELACION
+# MODELO ENTIDAD-RELACION
 <img width="968" height="711" alt="Captura de pantalla 2025-07-12 095512" src="https://github.com/user-attachments/assets/b7454e76-9c07-4d18-99cf-476cde81ba73" />
 
 
 
 
-MODELO RELACIONAL
+# MODELO RELACIONAL
 <img width="1064" height="529" alt="Captura de pantalla 2025-07-12 095332" src="https://github.com/user-attachments/assets/31ce6bb7-caf5-42a8-b1e6-066474f71388" />
+
+# DIAGRAMAS UML
+
 
 
 
