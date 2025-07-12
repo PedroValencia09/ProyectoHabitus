@@ -457,8 +457,10 @@ El perfil es el centro de la personalización del usuario y da control sobre su 
 <img width="1064" height="529" alt="Captura de pantalla 2025-07-12 095332" src="https://github.com/user-attachments/assets/31ce6bb7-caf5-42a8-b1e6-066474f71388" />
 
 # DIAGRAMAS UML
-
-
+# DIAGRAMA DE CLASES
+<img width="1261" height="649" alt="Captura de pantalla 2025-07-12 123859" src="https://github.com/user-attachments/assets/d182b1fa-9ab4-4829-b11a-7b227f7c16b0" />
+# DIAGRAMA CASOS DE USO
+<img width="721" height="707" alt="image" src="https://github.com/user-attachments/assets/55463450-134c-48ae-b372-dff0aea0b8a8" />
 
 
 
