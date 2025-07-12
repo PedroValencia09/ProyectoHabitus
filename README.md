@@ -1,9 +1,9 @@
 # ProyectoHabitus
 # INTEGRANTES
-JORGE ANGEL BORJA RODRIGUEZ
-LUIS GERARDO REYES MARTINES
-GUSTAVO FABIAN MEDEL
-PEDRO VALENCIA VAZQUEZ 
+JORGE ANGEL BORJA RODRIGUEZ ---
+LUIS GERARDO REYES MARTINES ---
+GUSTAVO FABIAN MEDEL ---
+PEDRO VALENCIA VAZQUEZ ---
 
 # 1. VENTANA LOGIN
 La función mostrar_login() es parte de la interfaz gráfica de la aplicación Habitus +, desarrollada con Python y la biblioteca tkinter. Esta función permite que los usuarios inicien sesión en la aplicación o accedan a la pantalla de registro en caso de que aún no tengan una cuenta. También se encarga de validar las credenciales ingresadas y redirigir al usuario a la siguiente ventana del sistema si los datos son correctos.
